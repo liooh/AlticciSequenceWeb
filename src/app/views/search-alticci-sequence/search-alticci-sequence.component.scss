@@ -1,0 +1,22 @@
+.top {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+    color: rgb(8, 37, 71);
+}
+
+.content {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+
+    .input {
+        margin: 10px;
+    }
+
+    .text {
+        color: rgb(241, 59, 35);
+        font-weight: 100;
+        font-size: 20px;
+    }
+}
