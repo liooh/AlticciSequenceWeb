@@ -12,6 +12,7 @@ export class SearchAlticciSequenceComponent implements OnInit {
   public sequenceNumberSearch: number;
   public sequenceNumberResult: bigint;
   public errorMessage: string;
+  public waiting: boolean;
 
   constructor(
     private searchAlticcSequenceService: SearchAlticciSequenceService
@@ -20,14 +21,21 @@ export class SearchAlticciSequenceComponent implements OnInit {
   ngOnInit(): void { }
 
   public search(): void {
+    this.waiting = true;
+    this.sequenceNumberResult = null;
+    this.errorMessage = null;
+
     if(this.sequenceNumberSearch) {
       this.searchAlticcSequenceService.search(this.sequenceNumberSearch)
       .subscribe((sequenceValue) => {
         this.sequenceNumberResult = sequenceValue;
         this.errorMessage = null;
+        this.waiting = false;
       }, (error) => {
         if(error.status === 500) {
           this.errorMessage = error.message;
+          this.waiting = false;
+          this.sequenceNumberResult = null;
         }
       });
     }

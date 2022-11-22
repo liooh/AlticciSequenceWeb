@@ -6,11 +6,12 @@
     <div class="form">
         <input class="input" type="text" [(ngModel)]="sequenceNumberSearch">
         <input (click)="search()" type="button" value="GO!">
-
-        <div *ngIf="this.sequenceNumberResult !== null && this.errorMessage === null">
+        <div *ngIf="this.waiting">
+            <p class="text">Loading...</p>
+        </div>
+        <div *ngIf="this.sequenceNumberResult !== null">
             <p class="text">The value is {{ this.sequenceNumberResult > 0 ? this.sequenceNumberResult : 'is not a possible calculate' }}</p>
         </div>
-        <br />
         <div *ngIf="this.errorMessage !== null">
             <p class="text">{{ this.errorMessage }}</p>
         </div>
